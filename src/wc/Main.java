@@ -29,7 +29,7 @@ public class Main {
 			try {
 				
 			    if(s1.equals("-c")&&file.exists()){
-			    	is = new FileInputStream(file);
+			    is = new FileInputStream(file);
 					isr = new InputStreamReader(is);
 					function.C_function.query(isr);
 					is.close();
