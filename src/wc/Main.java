@@ -25,27 +25,35 @@ public class Main {
 			File file = new File(s2);
 			InputStream is = null;
 			InputStreamReader isr = null;
+
 			try {
-				is = new FileInputStream(file);
-				isr = new InputStreamReader(is);
-				if(s1.equals("-c")){
+				
+			    if(s1.equals("-c")&&file.exists()){
+			    	is = new FileInputStream(file);
+					isr = new InputStreamReader(is);
 					function.C_function.query(isr);
-				}else if(s1.equals("-w")){
+					is.close();
+					isr.close();
+				}else if(s1.equals("-w")&&file.exists()){
+					is = new FileInputStream(file);
+					isr = new InputStreamReader(is);
 					function.W_function.query(isr);
-				}else if(s1.equals("-l")){
+					is.close();
+					isr.close();
+				}else if(s1.equals("-l")&&file.exists()){
+					is = new FileInputStream(file);
+					isr = new InputStreamReader(is);
 					function.L_funciton.query(isr);
+					is.close();
+					isr.close();
 				}else{
-					System.out.println("This function has not yet been opened.");
+					System.out.println("This function has not yet been opened or your path is wrong.");
 				}
 	 		} catch (FileNotFoundException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			} finally {
-				is.close();
-				isr.close();
-			}
+					e.printStackTrace();
+			} 
 		}
-		
+	
 		
 	}
 	
@@ -55,7 +63,7 @@ public class Main {
 		System.out.println("*Only for learning and communication*");
 		System.out.println("*            author：KELO           *");
 		System.out.println("*************************************");
-		System.out.println();
+		System.out.println("Please input instructions and file paths.");
 		
 
 	}
